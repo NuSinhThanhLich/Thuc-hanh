@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+#define endl "\n"
+using namespace std;
+int main () {
+	string s;
+	cin >> s;
+	if (s.size() == 1) {
+		if (s[0] - '0' >= 5) {
+			cout << "10";
+			return 0;
+		} else {
+			cout << s;
+			return 0;
+		}
+	}
+	
+	int n = s.size();
+	if (s[1] - '0' >= 5) {
+		cout << (s[0] - '0') + 1;
+		cout << string(n - 1, '0');
+		return 0;
+	} else {
+		cout << s[0];
+		cout << string(n - 1, '0');
+		return 0;
+	}
+}
