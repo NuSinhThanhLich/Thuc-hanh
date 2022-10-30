@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+const long long mod = 123456789;
+
+int convert(string s) {
+	if (s.size() > 1) {
+		return 0;
+	}
+	char x = s[0]; 
+    if(x == '+' || x == '-' || x == '*' || x == '/' ) 
+	return 1;
+    return 0;
+}
+
+int main () {
+	int t;
+	cin >> t;
+	while(t--) {
+		int n;
+		cin >> n;
+		stack<long long> st;
+		while (n--) {
+			string s;
+			cin >> s;
+			if (convert(s) == 0) {
+				long long x = stoll(s);
+				st.push(x);
+			} else {
+				long long k1 = st.top();
+				st.pop();
+				long long k2 = st.top();
+				st.pop();
+				if (s[0] == '-') {
+					st.push(k2 - k1);
+				}
+				if (s[0] == '+') {
+					st.push(k2 + k1);
+				}
+				if (s[0] == '*') {
+					st.push(k2 * k1);
+				}
+				if (s[0] == '/') {
+					st.push(k2 / k1);
+				}
+			}
+		}
+		cout << st.top() << endl;
+	}
+}
