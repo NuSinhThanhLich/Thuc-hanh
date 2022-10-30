@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+const long long mod = 123456789;
+
+int main () {
+	int t;
+	cin >> t;
+	scanf("\n");
+	while(t--) {
+		string s;
+		getline(cin, s);
+		stack<int> st;
+		int cnt = 1;
+		for (int i = 0; i < s.size(); i++) {
+			if (s[i] == '(') {
+				cout << cnt << " ";
+				st.push(cnt);
+				cnt++;	
+			} else if (s[i] == ')') {
+				cout << st.top() << " ";
+				st.pop();
+			}
+		}
+		cout << endl;
+	}
+}
